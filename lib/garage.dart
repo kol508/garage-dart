@@ -1,9 +1,9 @@
 import 'voiture.dart';
 
 class CabinetComptable {
-  final clients = <Object, int>{};
+  final clients = <Client, int>{};
 
-  void addClient(Object client) {
+  void addClient(Client client) {
     clients[client] = null;
   }
 
@@ -12,7 +12,19 @@ class CabinetComptable {
   }
 }
 
-class Garage {
+class Client {
+  int _chiffreAffaire = 0 ;
+
+  void addCA(int value){
+    _chiffreAffaire += value;
+  }
+
+  int getCA(){
+    return _chiffreAffaire;
+  }
+}
+
+class Garage extends Client{
   final _objetsAReparer = <Vehicule>[];
   Garage();
 

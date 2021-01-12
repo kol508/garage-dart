@@ -8,10 +8,12 @@ void main(List<String> arguments) {
 
   voiture2.couleur = 'verte';
   var garage = Garage();
+  var garage2 = Garage();
   var cabinet = CabinetComptable();
   cabinet.addClient(garage);
-  cabinet.addClient("Client 2");
-
+  garage.addCA(10);
+  cabinet.addClient(garage2);
+  print(cabinet);
   print(cabinet);
 
   print('Mon garage: $garage');
