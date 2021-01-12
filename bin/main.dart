@@ -6,9 +6,14 @@ void main(List<String> arguments) {
   var voiture1 = Voiture();
   var voiture2 = Voiture();
 
-  var reliant = Reliant();
+  var voiture3 = Voiture();
+  voiture3.couleur = "Jaune";
+  var reliant = Reliant(voiture3);
 
   garage.nouvellePriseCharge(reliant);
+
+  Pouet toto = Pouet();
+  toto.coucou();
 
   voiture2.couleur = 'verte';
 
@@ -17,7 +22,7 @@ void main(List<String> arguments) {
   garage.nouvellePriseCharge(voiture2);
   print('Mon garage: $garage');
 
-  voiture1.demarrer();
+  reliant.demarrer();
 
   print('end');
 }

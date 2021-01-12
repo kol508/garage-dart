@@ -1,8 +1,22 @@
 import 'package:garage_le_retour/garage.dart';
 
-abstract class TrucANePasModifier {}
-
-class Reliant extends TrucANePasModifier {
+class Reliant extends Object implements Voiture {
   static const roues = 3;
-  Reliant();
+  Voiture component;
+  Reliant(Voiture component) {
+    this.component = component;
+  }
+
+  @override
+  String couleur;
+
+  @override
+  void demarrer() {
+    component.demarrer();
+  }
+
+  @override
+  String toString() {
+    return component.toString();
+  }
 }
