@@ -1,4 +1,3 @@
-import 'package:garage_le_retour/voiture.dart';
 import 'package:garage_le_retour/garage.dart';
 
 void main(List<String> arguments) {
@@ -10,7 +9,6 @@ void main(List<String> arguments) {
   var garage = Garage();
   var cabinet = CabinetComptable();
   cabinet.addClient(garage);
-  cabinet.addClient("Client 2");
 
   print(cabinet);
 
@@ -22,6 +20,7 @@ void main(List<String> arguments) {
 
   voiture1.demarrer();
   moto1.mettreLaBequille();
+  print(cabinet);
 
   print('end');
 }

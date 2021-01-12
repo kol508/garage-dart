@@ -1,23 +1,45 @@
 import 'voiture.dart';
 
-class CabinetComptable {
+abstract class Observer {
+  void changed(Observable source, String event);
+}
+
+abstract class Observable {
+  final observers = <Observer>[];
+}
+
+class CabinetComptable implements Observer {
   final clients = <Object, int>{};
 
-  void addClient(Object client) {
-    clients[client] = null;
+  void addClient(Observable client) {
+    client.observers.add(this);
+    clients[client] = 0;
   }
 
   String toString() {
     return "clients : $clients";
   }
+
+  void changed(Observable source, event) {
+    if (event == "client a payé") clients[source] += 15;
+  }
 }
 
-class Garage {
+class Garage implements Observable {
+  final observers = <Observer>[];
   final _objetsAReparer = <Vehicule>[];
   Garage();
 
   void nouvellePriseCharge(Vehicule vehicule) {
     _objetsAReparer.add(vehicule);
+
+    notify("client a payé");
+  }
+
+  void notify(String event) {
+    observers.forEach((observer) {
+      observer.changed(this, event);
+    });
   }
 
   @override
